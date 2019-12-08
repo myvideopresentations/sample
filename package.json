@@ -190,9 +190,7 @@
     "node": ">=8.9.0"
   },
   "husky": {
-    "hooks": {
-      
-    }
+    "hooks": {}
   },
   "lint-staged": {
     "+(src|api)/**/*.js": [
