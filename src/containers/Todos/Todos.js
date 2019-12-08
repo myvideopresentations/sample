@@ -7,7 +7,7 @@ import { provideHooks } from 'redial';
 import Select from 'react-select';
 
 import {
-  Button, Table, Glyphicon, Navbar, FormGroup, Form
+  Button, Table, Glyphicon, Navbar, FormGroup, Form, Alert
 } from 'react-bootstrap';
 import {
   isLoaded,
@@ -18,7 +18,8 @@ import {
   setFilterKeyword,
   addFilterKeyword,
   deleteFilterKeyword,
-  deleteLastFilterKeyword
+  deleteLastFilterKeyword,
+  dismissError
 } from 'redux/modules/todos';
 
 /* eslint-disable max-len */
@@ -33,6 +34,7 @@ import {
     filterKeywords: state.todos.filterKeywords,
     filterKeyword: state.todos.filterKeyword,
     keywords: state.todos.keywords,
+    error: state.todos.error
   }),
   dispatch => bindActionCreators(
     {
@@ -43,7 +45,8 @@ import {
       setFilterKeyword,
       addFilterKeyword,
       deleteFilterKeyword,
-      deleteLastFilterKeyword
+      deleteLastFilterKeyword,
+      dismissError
     },
     dispatch
   )
@@ -58,6 +61,7 @@ class Todos extends Component {
     deleteFilterKeyword: PropTypes.func.isRequired,
     deleteLastFilterKeyword: PropTypes.func.isRequired,
     addFilterKeyword: PropTypes.func.isRequired,
+    dismissError: PropTypes.func.isRequired,
     items: PropTypes.arrayOf(
       PropTypes.shape({
         userId: PropTypes.number,
@@ -94,6 +98,7 @@ class Todos extends Component {
       filterKeywords,
       filterKeyword,
       keywords,
+      error,
       load,
       clickEvenButton,
       clickOddButton,
@@ -101,13 +106,26 @@ class Todos extends Component {
       setFilterKeyword,
       deleteFilterKeyword,
       deleteLastFilterKeyword,
-      addFilterKeyword
+      addFilterKeyword,
+      dismissError
     } = this.props;
 
     return (
       <div className="container">
         <h1>Todos</h1>
         <Helmet title="Todos" />
+        {error != null ?
+          <Alert bsStyle="danger">
+            <h4>Oh snap! We cannot get data from server!</h4>
+            <p>
+              This error indicates that your request failed to get data from server.
+            </p>
+            <p>
+              <Button onClick={dismissError}>Hide Alert</Button>
+            </p>
+          </Alert>
+          : null
+        }
         <Navbar fluid>
           <Navbar.Header>
             <Navbar.Brand>Title keywords</Navbar.Brand>

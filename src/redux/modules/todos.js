@@ -10,6 +10,7 @@ const SETFILTERKEYWORD_FAIL = 'todos-example/todos/SETFILTERKEYWORD_FAIL';
 const DELETEFILTERKEYWORD = 'todos-example/todos/DELETEFILTERKEYWORD';
 const DELETELASTFILTERKEYWORD = 'todos-example/todos/DELETELASTFILTERKEYWORD';
 const ADDFILTERKEYWORD = 'todos-example/todos/ADDFILTERKEYWORD';
+const DISMISSERROR = 'todos-example/todos/DISMISSERROR';
 
 const initialState = {
   loaded: false,
@@ -19,6 +20,7 @@ const initialState = {
   filterKeywords: [],
   filterKeyword: "",
   keywords: [],
+  error: null,
   isEvenToggled: false,
   isOddToggled: false
 };
@@ -77,14 +79,15 @@ export default function todos(state = initialState, action = {}) {
         ...state,
         keywordsLoading: false,
         keywordsLoaded: true,
-        keywords: newKeywords
+        keywords: newKeywords,
+        error: null
       };
     case SETFILTERKEYWORD_FAIL:
       return {
         ...state,
         keywordsLoading: false,
         keywordsLoaded: false,
-        keywordsError: action.error
+        error: action.error
       };
     case ADDFILTERKEYWORD: {
       const { filterKeywords } = state;
@@ -127,7 +130,8 @@ export default function todos(state = initialState, action = {}) {
         ...state,
         loading: false,
         loaded: true,
-        items: newItems
+        items: newItems,
+        error: null
       };
     case LOAD_FAIL:
       return {
@@ -136,6 +140,12 @@ export default function todos(state = initialState, action = {}) {
         loaded: false,
         error: action.error
       };
+    case DISMISSERROR: {
+      return {
+        ...state,
+        error: null
+      };
+    }
     default:
       return state;
   }
@@ -242,5 +252,11 @@ export function addFilterKeyword(id, value) {
     },
     id,
     value
+  };
+}
+
+export function dismissError() {
+  return {
+    type: DISMISSERROR
   };
 }
