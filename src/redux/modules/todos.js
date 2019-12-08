@@ -18,7 +18,7 @@ const initialState = {
   propertyName: null,
   isAsc: null,
   filterKeywords: [],
-  filterKeyword: "",
+  filterKeyword: '',
   keywords: [],
   error: null,
   isEvenToggled: false,
@@ -30,7 +30,7 @@ export default function todos(state = initialState, action = {}) {
     case CLICKEVENBUTTON: {
       let { items, isEvenToggled } = state;
       isEvenToggled = !isEvenToggled;
-      items = items.map(item => makeEvenColored(item, isEvenToggled ? "green" : "black"));
+      items = items.map(item => makeEvenColored(item, isEvenToggled ? 'green' : 'black'));
       return {
         ...state,
         items,
@@ -40,7 +40,7 @@ export default function todos(state = initialState, action = {}) {
     case CLICKODDBUTTON: {
       let { items, isOddToggled } = state;
       isOddToggled = !isOddToggled;
-      items = items.map(item => makeOddColored(item, isOddToggled ? "orange" : "black"));
+      items = items.map(item => makeOddColored(item, isOddToggled ? 'orange' : 'black'));
       return {
         ...state,
         items,
@@ -95,7 +95,7 @@ export default function todos(state = initialState, action = {}) {
       return {
         ...state,
         filterKeywords: [...filterKeywords, { id, value }],
-        filterKeyword: "",
+        filterKeyword: '',
         keywords: []
       };
     }
@@ -124,8 +124,9 @@ export default function todos(state = initialState, action = {}) {
     case LOAD_SUCCESS:
       const { items } = action.result;
       const { isEvenToggled, isOddToggled } = state;
-      const newItems = items.map(item => makeOddColored(item, isOddToggled ? "orange" : "black"))
-        .map(item => makeEvenColored(item, isEvenToggled ? "green" : "black"));
+      const newItems = items
+        .map(item => makeOddColored(item, isOddToggled ? 'orange' : 'black'))
+        .map(item => makeEvenColored(item, isEvenToggled ? 'green' : 'black'));
       return {
         ...state,
         loading: false,
@@ -156,7 +157,7 @@ function makeEvenColored(item, color) {
     return {
       ...item,
       color
-    }
+    };
   }
   return item;
 }
@@ -166,7 +167,7 @@ function makeOddColored(item, color) {
     return {
       ...item,
       color
-    }
+    };
   }
   return item;
 }
@@ -211,7 +212,7 @@ export function setSortOrder(propertyName, isAsc) {
 export function setFilterKeyword(filterKeyword) {
   return {
     types: [SETFILTERKEYWORD, SETFILTERKEYWORD_SUCCESS, SETFILTERKEYWORD_FAIL],
-    promise: ({ client }) => client.get('/load-keywords?filterKeyword=' + filterKeyword),
+    promise: ({ client }) => client.get(`/load-keywords?filterKeyword=${filterKeyword}`),
     filterKeyword
   };
 }

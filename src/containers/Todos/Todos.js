@@ -69,18 +69,21 @@ class Todos extends Component {
         title: PropTypes.string,
         completed: PropTypes.bool,
         color: PropTypes.string
-      })).isRequired,
+      })
+    ).isRequired,
     filterKeywords: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number,
         value: PropTypes.string
-      })).isRequired,
+      })
+    ).isRequired,
     filterKeyword: PropTypes.string,
     keywords: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number,
         value: PropTypes.string
-      })).isRequired,
+      })
+    ).isRequired,
     propertyName: PropTypes.string,
     isAsc: PropTypes.bool
   };
@@ -114,18 +117,15 @@ class Todos extends Component {
       <div className="container">
         <h1>Todos</h1>
         <Helmet title="Todos" />
-        {error != null ?
+        {error != null ? (
           <Alert bsStyle="danger">
             <h4>Oh snap! We cannot get data from server!</h4>
-            <p>
-              This error indicates that your request failed to get data from server.
-            </p>
+            <p>This error indicates that your request failed to get data from server.</p>
             <p>
               <Button onClick={dismissError}>Hide Alert</Button>
             </p>
           </Alert>
-          : null
-        }
+        ) : null}
         <Navbar fluid>
           <Navbar.Header>
             <Navbar.Brand>Title keywords</Navbar.Brand>
@@ -133,11 +133,17 @@ class Todos extends Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Navbar.Form>
-              <Form inline onSubmit={e => { e.preventDefault(); }}>
+              <Form
+                inline
+                onSubmit={e => {
+                  e.preventDefault();
+                }}
+              >
                 {filterKeywords.map(({ id, value }) => (
                   <React.Fragment key={id}>
                     <Button key={id} bsSize="small" onClick={() => deleteFilterKeyword(id)}>
-                      <Glyphicon glyph="remove" />&nbsp;{value}
+                      <Glyphicon glyph="remove" />
+                      &nbsp;{value}
                     </Button>
                     &nbsp;
                   </React.Fragment>
@@ -155,8 +161,8 @@ class Todos extends Component {
                     placeholder="Type to select ..."
                     onKeyDown={event => {
                       switch (event.keyCode) {
-                        case 8: /* Backspace */
-                          if (filterKeyword == "" && filterKeywords.length > 0) {
+                        case 8 /* Backspace */:
+                          if (filterKeyword == '' && filterKeywords.length > 0) {
                             deleteLastFilterKeyword();
                           }
                           break;
@@ -176,42 +182,86 @@ class Todos extends Component {
         <Table striped>
           <thead>
             <tr>
-              <th key="userId" className={styles.table_header}>User Id
+              <th key="userId" className={styles.table_header}>
+                User Id &nbsp;
+                <Glyphicon
+                  key="up"
+                  glyph="chevron-up"
+                  className={this.isActiveSortIcon('userId', true) ? styles.glyph_active : styles.glyph_inactive}
+                  onClick={() => setSortOrder('userId', true)}
+                />
                 &nbsp;
-                <Glyphicon key="up" glyph="chevron-up" className={this.isActiveSortIcon("userId", true) ? styles.glyph_active : styles.glyph_inactive} onClick={() => setSortOrder("userId", true)} />
-                &nbsp;
-                <Glyphicon key="down" glyph="chevron-down" className={this.isActiveSortIcon("userId", false) ? styles.glyph_active : styles.glyph_inactive} onClick={() => setSortOrder("userId", false)} />
+                <Glyphicon
+                  key="down"
+                  glyph="chevron-down"
+                  className={this.isActiveSortIcon('userId', false) ? styles.glyph_active : styles.glyph_inactive}
+                  onClick={() => setSortOrder('userId', false)}
+                />
               </th>
-              <th key="Id" className={styles.table_header}>Id
+              <th key="Id" className={styles.table_header}>
+                Id &nbsp;
+                <Glyphicon
+                  key="up"
+                  glyph="chevron-up"
+                  className={this.isActiveSortIcon('id', true) ? styles.glyph_active : styles.glyph_inactive}
+                  onClick={() => setSortOrder('id', true)}
+                />
                 &nbsp;
-                <Glyphicon key="up" glyph="chevron-up" className={this.isActiveSortIcon("id", true) ? styles.glyph_active : styles.glyph_inactive} onClick={() => setSortOrder("id", true)} />
-                &nbsp;
-                <Glyphicon key="down" glyph="chevron-down" className={this.isActiveSortIcon("id", false) ? styles.glyph_active : styles.glyph_inactive} onClick={() => setSortOrder("id", false)} />
+                <Glyphicon
+                  key="down"
+                  glyph="chevron-down"
+                  className={this.isActiveSortIcon('id', false) ? styles.glyph_active : styles.glyph_inactive}
+                  onClick={() => setSortOrder('id', false)}
+                />
               </th>
-              <th key="title" className={styles.table_header}>Title
+              <th key="title" className={styles.table_header}>
+                Title &nbsp;
+                <Glyphicon
+                  key="up"
+                  glyph="chevron-up"
+                  className={this.isActiveSortIcon('title', true) ? styles.glyph_active : styles.glyph_inactive}
+                  onClick={() => setSortOrder('title', true)}
+                />
                 &nbsp;
-                <Glyphicon key="up" glyph="chevron-up" className={this.isActiveSortIcon("title", true) ? styles.glyph_active : styles.glyph_inactive} onClick={() => setSortOrder("title", true)} />
-                &nbsp;
-                <Glyphicon key="down" glyph="chevron-down" className={this.isActiveSortIcon("title", false) ? styles.glyph_active : styles.glyph_inactive} onClick={() => setSortOrder("title", false)} />
+                <Glyphicon
+                  key="down"
+                  glyph="chevron-down"
+                  className={this.isActiveSortIcon('title', false) ? styles.glyph_active : styles.glyph_inactive}
+                  onClick={() => setSortOrder('title', false)}
+                />
               </th>
-              <th key="completed" className={styles.table_header}>Completed
+              <th key="completed" className={styles.table_header}>
+                Completed &nbsp;
+                <Glyphicon
+                  key="up"
+                  glyph="chevron-up"
+                  className={this.isActiveSortIcon('completed', true) ? styles.glyph_active : styles.glyph_inactive}
+                  onClick={() => setSortOrder('completed', true)}
+                />
                 &nbsp;
-                <Glyphicon key="up" glyph="chevron-up" className={this.isActiveSortIcon("completed", true) ? styles.glyph_active : styles.glyph_inactive} onClick={() => setSortOrder("completed", true)} />
-                &nbsp;
-                <Glyphicon key="down" glyph="chevron-down" className={this.isActiveSortIcon("completed", false) ? styles.glyph_active : styles.glyph_inactive} onClick={() => setSortOrder("completed", false)} />
+                <Glyphicon
+                  key="down"
+                  glyph="chevron-down"
+                  className={this.isActiveSortIcon('completed', false) ? styles.glyph_active : styles.glyph_inactive}
+                  onClick={() => setSortOrder('completed', false)}
+                />
               </th>
-              <th key="actions"></th>
+              <th key="actions" />
             </tr>
           </thead>
           <tbody>
-            {items.map(({ userId, id, title, completed, color }) => (
+            {items.map(({
+              userId, id, title, completed, color
+            }) => (
               <tr key={id}>
                 <td>{userId}</td>
                 <td style={{ color }}>{id}</td>
                 <td>{title}</td>
                 <td>{completed.toString()}</td>
                 <td className={styles.table_header}>
-                  <Button bsSize="small" bsStyle="primary" onClick={clickOddButton}>Toggle Odd</Button>
+                  <Button bsSize="small" bsStyle="primary" onClick={clickOddButton}>
+                    Toggle Odd
+                  </Button>
                 </td>
               </tr>
             ))}
@@ -221,6 +271,5 @@ class Todos extends Component {
     );
   }
 }
-
 
 export default Todos;
