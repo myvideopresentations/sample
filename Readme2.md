@@ -85,3 +85,6 @@ Application needs to highlight records based on some conditions. Since they don'
 
 # Running
 See original [readme file](ORIGREADME.md)
+
+# Screenshot
+![Todos](todos2.png)
