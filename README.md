@@ -93,3 +93,6 @@ I put search and sorting functionality to the end point since it affects filteri
 1. REST API tests
 2. Redux store action handlers tests.
 3. UI automation tests using [puppeteer](https://developers.google.com/web/tools/puppeteer)
+
+# Running
+See original [readme file](ORIGREADME.md)
