@@ -5,9 +5,9 @@ The requirement to pull data from REST API end point implies development of the 
 
 ## MVVM - Model View ViewModel Design Pattern
 
-* Model - [REST API](\api\services\todos2\index.js)
-* View Model - [Redux Store](\src\redux\modules\todos2.js)
-* View - [Application's View](\src\containers\Todos2\Todos2.js)
+* Model - [REST API](https://jsonplaceholder.typicode.com/)
+* View Model - [Redux Store](src/redux/modules/todos2.js)
+* View - [Application's View](src/containers/Todos2/Todos2.js)
 
 ## Action handlers
 
@@ -82,3 +82,6 @@ Application needs to highlight records based on some conditions. Since they don'
 # Testing
 1. Redux store action handlers tests.
 2. UI automation tests using [puppeteer](https://developers.google.com/web/tools/puppeteer)
+
+# Running
+See original [readme file](ORIGREADME.md)
