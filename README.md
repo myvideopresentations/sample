@@ -11,7 +11,7 @@ The requirement to pull data from REST API end point implies development of the 
 
 ## Action handlers
 
-All the manipulations of Redux data store are performed with messages, they are generates inside action functions:
+All Redux data store changes are performed with messages, they are generated inside action functions:
 
 ``` JavaScript
 export function clickEvenButton() {
@@ -21,7 +21,7 @@ export function clickEvenButton() {
 }
 ```
 
-Application view calls this action functions to change application state. Action functions hide async REST API calls and control error state of the data store as well. 
+Application view calls action functions to change application state. Action functions hide async REST API calls and control error state of the data store as well. 
 
 ``` JavaScript
 export function deleteLastFilterKeyword() {
