@@ -123,6 +123,9 @@ class App extends Component {
               <LinkContainer to="/todos">
                 <NavItem>Todos</NavItem>
               </LinkContainer>
+              <LinkContainer to="/todos2">
+                <NavItem>Todos 2</NavItem>
+              </LinkContainer>
 
               {!user && (
                 <LinkContainer to="/login">

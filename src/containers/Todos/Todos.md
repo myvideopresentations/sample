@@ -88,3 +88,8 @@ Application needs to highlight records based on some conditions. Since those con
 
 ## Resume
 I put search and sorting functionality to the end point since it affects filtering conditions at the source of data. Users may see different sets of records depending on their permissions and roles. Server is better suited for search across huge records dataset, it can implement keywords to records relations and use union search to find matching records in database and efficiently cut top 200 records.
+
+# Testing
+1. REST API tests
+2. Redux store action handlers tests.
+3. UI automation tests using [puppeteer](https://developers.google.com/web/tools/puppeteer)

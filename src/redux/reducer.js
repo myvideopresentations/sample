@@ -4,6 +4,7 @@ import notifs from './modules/notifs';
 import counter from './modules/counter';
 import info from './modules/info';
 import todos from './modules/todos';
+import todos2 from './modules/todos2';
 
 export default function createReducers(asyncReducers) {
   return {
@@ -17,6 +18,7 @@ export default function createReducers(asyncReducers) {
     }),
     info,
     todos,
+    todos2,
     ...asyncReducers
   };
 }
