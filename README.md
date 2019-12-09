@@ -5,9 +5,9 @@ The requirement to pull data from REST API end point implies development of the 
 
 ## MVVM - Model View ViewModel Design Pattern
 
-* Model - [REST API](api\services\todos\index.js)
-* View Model - [Redux Store](src\redux\modules\todos.js)
-* View - [Application's View](src\containers\Todos\Todos.js)
+* Model - [REST API](api/services/todos/index.js)
+* View Model - [Redux Store](src/redux/modules/todos.js)
+* View - [Application's View](src/containers/Todos/Todos.js)
 
 ## Action handlers
 
