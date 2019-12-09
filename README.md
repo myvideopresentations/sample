@@ -5,9 +5,9 @@ The requirement to pull data from REST API end point implies development of the 
 
 ## MVVM - Model View ViewModel Design Pattern
 
-* Model - [REST API](\api\services\todos\index.js)
-* View Model - [Redux Store](\src\redux\modules\todos.js)
-* View - [Application's View](\src\containers\Todos\Todos.js)
+* Model - [REST API](api/services/todos/index.js)
+* View Model - [Redux Store](src/redux/modules/todos.js)
+* View - [Application's View](src/containers/Todos/Todos.js)
 
 ## Action handlers
 
@@ -93,3 +93,6 @@ I put search and sorting functionality to the end point since it affects filteri
 1. REST API tests
 2. Redux store action handlers tests.
 3. UI automation tests using [puppeteer](https://developers.google.com/web/tools/puppeteer)
+
+# Running
+See original [readme file](ORIGREADME.md)
